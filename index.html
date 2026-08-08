@@ -341,7 +341,7 @@
                     </div>
                 </div>
 
-                <!-- Firebase Comments Section -->
+                <!-- Firebase Realtime Database Comments Section -->
                 <div class="comments-section">
                     <h3>Player Reviews & Comments</h3>
                     <div id="commentsList" style="margin-bottom: 15px;">
@@ -370,51 +370,55 @@
         </footer>
     </div>
 
-    <!-- Scripts: Firebase & Features -->
+    <!-- Scripts: Firebase Realtime Database & Features -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
         
         const firebaseConfig = {
             apiKey: "AIzaSyDzJKTeQ4FvqRyh3PD3WcHIQEAOAijPf9M",
             authDomain: "alexfangsigmateam.firebaseapp.com",
+            databaseURL: "https://alexfangsigmateam-default-rtdb.firebaseio.com",
             projectId: "alexfangsigmateam",
             storageBucket: "alexfangsigmateam.firebasestorage.app",
             messagingSenderId: "400214351941",
             appId: "1:400214351941:web:dfcd4db40abdf8dadc832c"
         };
 
-        // Initialize Firebase & Firestore
+        // Initialize Firebase & Realtime Database
         const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+        const db = getDatabase(app);
+        const commentsRef = ref(db, 'comments');
 
-        // --- Comments Real-time Integration ---
+        // --- Comments Real-time Integration (Realtime DB) ---
         const commentsList = document.getElementById('commentsList');
         const postCommentBtn = document.getElementById('postCommentBtn');
         const commentNameInput = document.getElementById('commentName');
         const commentTextInput = document.getElementById('commentText');
 
-        // Fetch comments in real-time from Firestore 'comments' collection
-        const q = query(collection(db, "comments"), orderBy("timestamp", "desc"));
-        onSnapshot(q, (snapshot) => {
+        // Fetch comments in real-time from Realtime Database
+        onValue(commentsRef, (snapshot) => {
             commentsList.innerHTML = "";
-            if (snapshot.empty) {
+            if (!snapshot.exists()) {
                 commentsList.innerHTML = "<p style='font-size:12px; color:#777;'>No comments yet. Be the first one!</p>";
                 return;
             }
-            snapshot.forEach((doc) => {
-                const data = doc.data();
+            const data = snapshot.val();
+            // Convert object to array and reverse to show newest comments on top
+            const commentsArray = Object.values(data).reverse();
+            
+            commentsArray.forEach(comment => {
                 const div = document.createElement('div');
                 div.className = 'comment-item';
-                div.innerHTML = `<strong>${escapeHtml(data.name || 'Anonymous')}</strong><p>${escapeHtml(data.text || '')}</p>`;
+                div.innerHTML = `<strong>${escapeHtml(comment.name || 'Anonymous')}</strong><p>${escapeHtml(comment.text || '')}</p>`;
                 commentsList.appendChild(div);
             });
         }, (error) => {
-            console.error("Firestore Error: ", error);
+            console.error("Firebase RTDB Error: ", error);
             commentsList.innerHTML = "<p style='font-size:12px; color:red;'>Failed to load comments. Check Firebase Rules.</p>";
         });
 
-        // Add comment to Firestore
+        // Add comment to Realtime Database
         postCommentBtn.addEventListener('click', async () => {
             const name = commentNameInput.value.trim();
             const text = commentTextInput.value.trim();
@@ -425,16 +429,16 @@
             }
 
             try {
-                await addDoc(collection(db, "comments"), {
+                await push(commentsRef, {
                     name: name,
                     text: text,
-                    timestamp: serverTimestamp()
+                    timestamp: Date.now()
                 });
                 commentNameInput.value = "";
                 commentTextInput.value = "";
             } catch (e) {
                 console.error("Error adding comment: ", e);
-                alert("Error posting comment. Ensure Firestore is enabled in your Firebase Console.");
+                alert("Error posting comment. Ensure Realtime Database rules allow write access.");
             }
         });
 
