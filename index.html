@@ -19,6 +19,7 @@
             background-color: #111111;
             border: 2px solid #2a2a2a;
             box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+            position: relative; /* Modal aur 3-dot button ke liye zaroori hai */
         }
 
         /* Header Section - Fixed Size Banner */
@@ -31,6 +32,75 @@
             background-repeat: no-repeat;
             border-bottom: 2px solid #400000;
             box-sizing: border-box;
+            position: relative;
+        }
+
+        /* Three Dot Menu Button (Top-Right) */
+        .menu-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #ff3333;
+            border: 1px solid #550000;
+            padding: 4px 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 3px;
+            z-index: 100;
+        }
+
+        .menu-btn:hover {
+            background: #500000;
+            color: #fff;
+        }
+
+        /* Banner Settings Modal Box */
+        .banner-modal {
+            display: none; /* Pehle chhupa rahega */
+            position: absolute;
+            top: 45px;
+            right: 10px;
+            background: #1a1a1a;
+            border: 2px solid #ff3333;
+            padding: 12px;
+            width: 280px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.8);
+            z-index: 101;
+        }
+
+        .banner-modal h4 {
+            color: #ff4444;
+            margin: 0 0 8px 0;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .banner-modal input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            background: #000;
+            border: 1px solid #444;
+            color: #fff;
+            font-size: 11px;
+            box-sizing: border-box;
+            margin-bottom: 8px;
+        }
+
+        .banner-modal button {
+            background: linear-gradient(to bottom, #990000, #550000);
+            color: #fff;
+            border: 1px solid #bb0000;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .banner-modal button:hover {
+            background: linear-gradient(to bottom, #cc0000, #770000);
         }
 
         /* Navigation Bar */
@@ -186,7 +256,17 @@
 
     <div id="wrapper">
         <!-- Header Image Container -->
-        <header></header>
+        <header id="mainHeader">
+            <!-- Three Dot Button -->
+            <button class="menu-btn" id="threeDotBtn" title="Change Banner">⋮</button>
+            
+            <!-- Hidden Settings Modal Box -->
+            <div class="banner-modal" id="bannerModal">
+                <h4>Change Banner URL</h4>
+                <input type="text" id="imageUrlInput" placeholder="Paste Image URL here...">
+                <button id="saveBannerBtn">Save</button>
+            </div>
+        </header>
 
         <!-- Navigation -->
         <nav>
@@ -226,13 +306,10 @@
         </footer>
     </div>
 
-    <!-- Firebase Initialization Script -->
+    <!-- Scripts: Banner Customization & Firebase -->
     <script type="module">
-        // Import Firebase SDKs
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
-
-        // Your web app's Firebase configuration from your credentials
+        
         const firebaseConfig = {
             apiKey: "AIzaSyDzJKTeQ4FvqRyh3PD3WcHIQEAOAijPf9M",
             authDomain: "alexfangsigmateam.firebaseapp.com",
@@ -241,12 +318,52 @@
             messagingSenderId: "400214351941",
             appId: "1:400214351941:web:dfcd4db40abdf8dadc832c"
         };
+        initializeApp(firebaseConfig);
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        
-        console.log("Firebase connected successfully to project: " + firebaseConfig.projectId);
+        // --- Banner Change Logic ---
+        const header = document.getElementById('mainHeader');
+        const threeDotBtn = document.getElementById('threeDotBtn');
+        const bannerModal = document.getElementById('bannerModal');
+        const imageUrlInput = document.getElementById('imageUrlInput');
+        const saveBannerBtn = document.getElementById('saveBannerBtn');
+
+        // Check if a custom banner URL is saved in localStorage
+        const savedBanner = localStorage.getItem('sigmaBannerUrl');
+        if (savedBanner) {
+            header.style.backgroundImage = `url('${savedBanner}')`;
+        }
+
+        // Toggle Modal on Three-Dot click
+        threeDotBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (bannerModal.style.display === 'block') {
+                bannerModal.style.display = 'none';
+            } else {
+                bannerModal.style.display = 'block';
+                imageUrlInput.value = savedBanner || '';
+            }
+        });
+
+        // Hide modal when clicking outside
+        window.addEventListener('click', () => {
+            bannerModal.style.display = 'none';
+        });
+
+        bannerModal.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Save new banner URL
+        saveBannerBtn.addEventListener('click', () => {
+            const newUrl = imageUrlInput.value.trim();
+            if (newUrl) {
+                header.style.backgroundImage = `url('${newUrl}')`;
+                localStorage.setItem('sigmaBannerUrl', newUrl);
+                bannerModal.style.display = 'none';
+            } else {
+                alert('Please enter a valid image URL.');
+            }
+        });
     </script>
 
 </body>
