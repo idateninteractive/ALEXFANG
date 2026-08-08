@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sigma Team Games - Classic Retro Archive</title>
+    <style>
+        /* 2009-2010 Era Retro Gaming Website Style */
+        body {
+            background-color: #050505;
+            color: #c0c0c0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 960px;
+            margin: 20px auto;
+            background-color: #111111;
+            border: 2px solid #2a2a2a;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
+
+        /* Header Section - Fixed Size Banner */
+        header {
+            width: 960px;
+            height: 120px;
+            background-image: url('https://kommodo.ai/i/WLpe1YAaKoIcEKnZim5H');
+            background-size: 100% 100%; 
+            background-position: center;
+            background-repeat: no-repeat;
+            border-bottom: 2px solid #400000;
+            box-sizing: border-box;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: #1f1f1f;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            border-right: 1px solid #333;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 12px 22px;
+            color: #ddd;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 12px;
+            background: linear-gradient(to bottom, #2b2b2b, #1a1a1a);
+            text-transform: uppercase;
+        }
+
+        nav ul li a:hover {
+            background: linear-gradient(to bottom, #500000, #200000);
+            color: #ff6666;
+        }
+
+        /* Main Layout Container */
+        .container {
+            display: flex;
+            min-height: 500px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background: #141414;
+        }
+
+        /* Sidebar (Right Side) */
+        sidebar {
+            width: 220px;
+            background: #0d0d0d;
+            border-left: 1px solid #222;
+            padding: 15px;
+        }
+
+        sidebar h3 {
+            color: #ff3333;
+            font-size: 13px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            margin-top: 0;
+            text-transform: uppercase;
+        }
+
+        sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        sidebar ul li {
+            margin-bottom: 8px;
+        }
+
+        sidebar ul li a {
+            color: #999;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        sidebar ul li a:hover {
+            color: #ff4444;
+            text-decoration: underline;
+        }
+
+        /* Game Box Styling */
+        .game-box {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .game-img {
+            width: 160px;
+            height: 100px;
+            background: #000;
+            border: 1px solid #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 11px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .game-details h2 {
+            color: #ff4444;
+            margin: 0 0 8px 0;
+            font-size: 17px;
+        }
+
+        .game-details p {
+            font-size: 12px;
+            color: #888;
+            line-height: 1.4;
+            margin: 0 0 12px 0;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background: linear-gradient(to bottom, #990000, #550000);
+            color: #fff;
+            padding: 6px 14px;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: bold;
+            border: 1px solid #bb0000;
+            border-radius: 2px;
+            text-transform: uppercase;
+        }
+
+        .btn-download:hover {
+            background: linear-gradient(to bottom, #cc0000, #770000);
+        }
+
+        footer {
+            background: #090909;
+            color: #555;
+            text-align: center;
+            padding: 15px;
+            font-size: 11px;
+            border-top: 2px solid #222;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="wrapper">
+        <!-- Header Image Container -->
+        <header></header>
+
+        <!-- Navigation -->
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Games</a></li>
+                <li><a href="#">Downloads</a></li>
+                <li><a href="#">Screenshots</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </nav>
+
+        <div class="container">
+            <div class="main-content">
+                <div class="game-box">
+                    <div class="game-img">[ AS2 Screenshot ]</div>
+                    <div class="game-details">
+                        <h2>Alien Shooter 2: Reloaded</h2>
+                        <p>Alien Shooter 2 is a large-scale sequel to the first part of Alien Shooter.</p>
+                        <a href="#" class="btn-download">Download Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <sidebar>
+                <h3>Top Games</h3>
+                <ul>
+                    <li><a href="#">Alien Shooter</a></li>
+                    <li><a href="#">Zombie Shooter</a></li>
+                </ul>
+            </sidebar>
+        </div>
+
+        <footer>
+            &copy; 2009-2010 Sigma Team Fansite. All rights reserved.
+        </footer>
+    </div>
+
+    <!-- Firebase Initialization Script -->
+    <script type="module">
+        // Import Firebase SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+
+        // Your web app's Firebase configuration from your credentials
+        const firebaseConfig = {
+            apiKey: "AIzaSyDzJKTeQ4FvqRyh3PD3WcHIQEAOAijPf9M",
+            authDomain: "alexfangsigmateam.firebaseapp.com",
+            projectId: "alexfangsigmateam",
+            storageBucket: "alexfangsigmateam.firebasestorage.app",
+            messagingSenderId: "400214351941",
+            appId: "1:400214351941:web:dfcd4db40abdf8dadc832c"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        
+        console.log("Firebase connected successfully to project: " + firebaseConfig.projectId);
+    </script>
+
+</body>
+</html>
