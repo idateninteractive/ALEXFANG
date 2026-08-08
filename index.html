@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>Sigma Team Games - Classic Retro Archive</title>
     <style>
-        /* 2009-2010 Era Retro Gaming Website Style */
+        /* Light / White Theme Retro Gaming Style */
         body {
-            background-color: #050505;
-            color: #c0c0c0;
+            background-color: #f0f0f0;
+            color: #333333;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -16,21 +16,21 @@
         #wrapper {
             width: 960px;
             margin: 20px auto;
-            background-color: #111111;
-            border: 2px solid #2a2a2a;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-            position: relative; /* Modal aur 3-dot button ke liye zaroori hai */
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
-        /* Header Section - Fixed Size Banner */
+        /* Header Section - Mountain Banner Default */
         header {
             width: 960px;
             height: 120px;
-            background-image: url('https://kommodo.ai/i/WLpe1YAaKoIcEKnZim5H');
+            background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=960&q=80');
             background-size: 100% 100%; 
             background-position: center;
             background-repeat: no-repeat;
-            border-bottom: 2px solid #400000;
+            border-bottom: 2px solid #dd0000;
             box-sizing: border-box;
             position: relative;
         }
@@ -40,9 +40,9 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            background: rgba(0, 0, 0, 0.8);
-            color: #ff3333;
-            border: 1px solid #550000;
+            background: rgba(255, 255, 255, 0.9);
+            color: #cc0000;
+            border: 1px solid #cccccc;
             padding: 4px 10px;
             font-size: 18px;
             font-weight: bold;
@@ -52,26 +52,26 @@
         }
 
         .menu-btn:hover {
-            background: #500000;
+            background: #cc0000;
             color: #fff;
         }
 
         /* Banner Settings Modal Box */
         .banner-modal {
-            display: none; /* Pehle chhupa rahega */
+            display: none;
             position: absolute;
             top: 45px;
             right: 10px;
-            background: #1a1a1a;
-            border: 2px solid #ff3333;
+            background: #ffffff;
+            border: 2px solid #cc0000;
             padding: 12px;
             width: 280px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.8);
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
             z-index: 101;
         }
 
         .banner-modal h4 {
-            color: #ff4444;
+            color: #cc0000;
             margin: 0 0 8px 0;
             font-size: 12px;
             text-transform: uppercase;
@@ -80,18 +80,18 @@
         .banner-modal input[type="text"] {
             width: 100%;
             padding: 5px;
-            background: #000;
-            border: 1px solid #444;
-            color: #fff;
+            background: #ffffff;
+            border: 1px solid #ccc;
+            color: #333;
             font-size: 11px;
             box-sizing: border-box;
             margin-bottom: 8px;
         }
 
         .banner-modal button {
-            background: linear-gradient(to bottom, #990000, #550000);
+            background: linear-gradient(to bottom, #ee0000, #aa0000);
             color: #fff;
-            border: 1px solid #bb0000;
+            border: 1px solid #990000;
             padding: 4px 10px;
             font-size: 11px;
             font-weight: bold;
@@ -100,14 +100,14 @@
         }
 
         .banner-modal button:hover {
-            background: linear-gradient(to bottom, #cc0000, #770000);
+            background: linear-gradient(to bottom, #ff0000, #cc0000);
         }
 
         /* Navigation Bar */
         nav {
-            background: #1f1f1f;
-            border-top: 1px solid #333;
-            border-bottom: 1px solid #333;
+            background: #f8f8f8;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
         }
 
         nav ul {
@@ -118,23 +118,23 @@
         }
 
         nav ul li {
-            border-right: 1px solid #333;
+            border-right: 1px solid #ddd;
         }
 
         nav ul li a {
             display: block;
             padding: 12px 22px;
-            color: #ddd;
+            color: #333333;
             text-decoration: none;
             font-weight: bold;
             font-size: 12px;
-            background: linear-gradient(to bottom, #2b2b2b, #1a1a1a);
+            background: linear-gradient(to bottom, #ffffff, #e6e6e6);
             text-transform: uppercase;
         }
 
         nav ul li a:hover {
-            background: linear-gradient(to bottom, #500000, #200000);
-            color: #ff6666;
+            background: linear-gradient(to bottom, #cc0000, #990000);
+            color: #ffffff;
         }
 
         /* Main Layout Container */
@@ -147,21 +147,21 @@
         .main-content {
             flex: 1;
             padding: 20px;
-            background: #141414;
+            background: #ffffff;
         }
 
         /* Sidebar (Right Side) */
         sidebar {
             width: 220px;
-            background: #0d0d0d;
-            border-left: 1px solid #222;
+            background: #fafafa;
+            border-left: 1px solid #e0e0e0;
             padding: 15px;
         }
 
         sidebar h3 {
-            color: #ff3333;
+            color: #cc0000;
             font-size: 13px;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid #dddddd;
             padding-bottom: 5px;
             margin-top: 0;
             text-transform: uppercase;
@@ -178,77 +178,78 @@
         }
 
         sidebar ul li a {
-            color: #999;
+            color: #555555;
             text-decoration: none;
             font-size: 12px;
         }
 
         sidebar ul li a:hover {
-            color: #ff4444;
+            color: #cc0000;
             text-decoration: underline;
         }
 
         /* Game Box Styling */
         .game-box {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
+            background: #ffffff;
+            border: 1px solid #dddddd;
             padding: 15px;
             margin-bottom: 20px;
             display: flex;
             gap: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
         }
 
         .game-img {
             width: 160px;
             height: 100px;
-            background: #000;
-            border: 1px solid #444;
+            background: #e6e6e6;
+            border: 1px solid #cccccc;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #555;
+            color: #666666;
             font-size: 11px;
             text-align: center;
             font-weight: bold;
         }
 
         .game-details h2 {
-            color: #ff4444;
+            color: #cc0000;
             margin: 0 0 8px 0;
             font-size: 17px;
         }
 
         .game-details p {
             font-size: 12px;
-            color: #888;
+            color: #666666;
             line-height: 1.4;
             margin: 0 0 12px 0;
         }
 
         .btn-download {
             display: inline-block;
-            background: linear-gradient(to bottom, #990000, #550000);
+            background: linear-gradient(to bottom, #ee0000, #aa0000);
             color: #fff;
             padding: 6px 14px;
             text-decoration: none;
             font-size: 11px;
             font-weight: bold;
-            border: 1px solid #bb0000;
+            border: 1px solid #990000;
             border-radius: 2px;
             text-transform: uppercase;
         }
 
         .btn-download:hover {
-            background: linear-gradient(to bottom, #cc0000, #770000);
+            background: linear-gradient(to bottom, #ff0000, #cc0000);
         }
 
         footer {
-            background: #090909;
-            color: #555;
+            background: #f8f8f8;
+            color: #666666;
             text-align: center;
             padding: 15px;
             font-size: 11px;
-            border-top: 2px solid #222;
+            border-top: 1px solid #dddddd;
         }
     </style>
 </head>
@@ -327,24 +328,21 @@
         const imageUrlInput = document.getElementById('imageUrlInput');
         const saveBannerBtn = document.getElementById('saveBannerBtn');
 
-        // Check if a custom banner URL is saved in localStorage
         const savedBanner = localStorage.getItem('sigmaBannerUrl');
         if (savedBanner) {
             header.style.backgroundImage = `url('${savedBanner}')`;
         }
 
-        // Toggle Modal on Three-Dot click
         threeDotBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             if (bannerModal.style.display === 'block') {
                 bannerModal.style.display = 'none';
             } else {
                 bannerModal.style.display = 'block';
-                imageUrlInput.value = savedBanner || '';
+                imageUrlInput.value = savedBanner || 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=960&q=80';
             }
         });
 
-        // Hide modal when clicking outside
         window.addEventListener('click', () => {
             bannerModal.style.display = 'none';
         });
@@ -353,7 +351,6 @@
             e.stopPropagation();
         });
 
-        // Save new banner URL
         saveBannerBtn.addEventListener('click', () => {
             const newUrl = imageUrlInput.value.trim();
             if (newUrl) {
