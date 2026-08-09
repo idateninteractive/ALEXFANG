@@ -404,7 +404,6 @@
                 return;
             }
             const data = snapshot.val();
-            // Convert object to array and reverse to show newest comments on top
             const commentsArray = Object.values(data).reverse();
             
             commentsArray.forEach(comment => {
